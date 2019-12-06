@@ -2,7 +2,7 @@
 # GET ALL USER INPUT
 echo "Domain Name (eg. example.com)?"
 read DOMAIN
-echo "App name (eg. kloudboy)?"
+echo "App name (eg. reative)?"
 read APP_NAME
 tput setaf 2; echo 'Wellcome to Parse Server and Dashboard on Ubuntu 18.04 install bash script';
 sleep 2;
@@ -66,19 +66,19 @@ tput setaf 2; echo 'Adding APP_ID and MASTER_KEY';
 sleep 2;
 tput sgr0
 APP_ID=`pwgen -s 24 1`
-sudo sed -i "s/appId: process.env.APP_ID || .*/appId: process.env.APP_ID || '$APP_ID',/" ./$APP_NAME/index.js
-sudo sed -i -e "s/APP_ID/$APP_ID/" "./$APP_NAME/parse-dashboard-config.json"
-sudo sed -i -e "s/APP_NAME/$APP_NAME/" "./$APP_NAME/parse-dashboard-config.json"
-sudo sed -i -e "s/DOMAIN/$DOMAIN/" "./$APP_NAME/parse-dashboard-config.json"
-sudo sed -i -e "s/APP_NAME/$APP_NAME/" "./$APP_NAME/dashboard-running.json"
-sudo sed -i -e "s/localhost:1337/app.$DOMAIN/" "./$APP_NAME/index.js"
-sudo sed -i -e "s/http/https/" "./$APP_NAME/index.js"
+sudo sed -i "s/appId: process.env.APP_ID || .*/appId: process.env.APP_ID || '$APP_ID',/" $APP_NAME/index.js
+sudo sed -i -e "s/APP_ID/$APP_ID/" "$APP_NAME/parse-dashboard-config.json"
+sudo sed -i -e "s/APP_NAME/$APP_NAME/" "$APP_NAME/parse-dashboard-config.json"
+sudo sed -i -e "s/DOMAIN/$DOMAIN/" "$APP_NAME/parse-dashboard-config.json"
+sudo sed -i -e "s/APP_NAME/$APP_NAME/" "$APP_NAME/dashboard-running.json"
+sudo sed -i -e "s/localhost:1337/app.$DOMAIN/" "$APP_NAME/index.js"
+sudo sed -i -e "s/http/https/" "$APP_NAME/index.js"
 MASTER_KEY=`pwgen -s 26 1`
-sudo sed -i "s/masterKey: process.env.MASTER_KEY || .*/masterKey: process.env.MASTER_KEY || '$MASTER_KEY',/" ./$APP_NAME/index.js
-sudo sed -i -e "s/MASTER_KEY/$MASTER_KEY/" "./$APP_NAME/parse-dashboard-config.json"
+sudo sed -i "s/masterKey: process.env.MASTER_KEY || .*/masterKey: process.env.MASTER_KEY || '$MASTER_KEY',/" $APP_NAME/index.js
+sudo sed -i -e "s/MASTER_KEY/$MASTER_KEY/" "$APP_NAME/parse-dashboard-config.json"
 
 PASS=`pwgen -s 9 1`
-sudo sed -i -e "s/PASS/$PASS/" "./$APP_NAME/parse-dashboard-config.json"
+sudo sed -i -e "s/PASS/$PASS/" "$APP_NAME/parse-dashboard-config.json"
 tput setaf 2; echo 'Enable pm2';
 echo
 tput sgr0
